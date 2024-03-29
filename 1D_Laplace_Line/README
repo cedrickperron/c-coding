@@ -1,0 +1,93 @@
+# ReadMe for gameof1d
+
+Author: Cedrick Perron
+Email address: cedrick.perron@mail.utoronto.ca
+
+
+## Project overview
+
+
+
+For our problem, the domain for the electric field 𝑉 is the unit interval 𝑥∈[0,1], with boundary conditions 𝑉(𝑥=0)=0 and 𝑉(𝑥=1)=1. The Laplace equation to solve is
+
+𝑑𝑑𝑥[𝜖(𝑥)𝑑𝑉𝑑𝑥]=0
+
+where the inhomogeneous dielectric constant is (in arbitrary units) given by
+
+𝜖(𝑥)=1+10cos2(2𝜋𝑥)
+
+Use a discretization scheme where the 𝑥 axis will be discretized into 𝑁+1 points, such that 𝑥𝑖=𝑖Δ𝑥, with Δ𝑥=1/𝑁.  
+
+The boundary conditions become 𝑉0=0 and 𝑉𝑁=1.
+
+The discretization of this Laplace equation needs to take into account the 𝑥 dependence of 𝜖. To 𝑂(Δ𝑥2) , this works out as follows:
+
+𝑑𝑑𝑥[𝜖(𝑥)𝑑𝑉𝑑𝑥]𝑥=𝑥𝑖
+
+≈𝜖(𝑥+Δ𝑥/2)𝑉𝑖+1+𝜖(𝑥−Δ𝑥/2)𝑉𝑖−1−{𝜖(𝑥+Δ𝑥/2)+𝜖(𝑥−Δ𝑥/2)}𝑉𝑖Δ𝑥2
+
+This holds for 𝑖>0 and 𝑖<𝑁. 
+
+If we denote by 𝑣 the 𝑁−1-dimensional vector (𝑉1,𝑉2,..,𝑉𝑁−1), we can write the discretized equation as
+
+𝐀⋅𝑣=𝑏
+
+where 𝐀 is an 𝑁−1 x 𝑁−1 "tri-diagonal" matrix, and 𝑏 is an 𝑁−1 dimensional vector (0,...,0,−𝜖(𝑥+Δ𝑥/2)𝑉𝑁/Δ𝑥2) (that is, unless you factor out the common factor of 1/Δ𝑥2).
+
+
+
+
+## Compiler and Library
+
+
+Compiler: g++ 13.2.0
+
+RARRAY
+git clone https://github.com/dkirkby/rarray.git
+
+HDF5
+git clone https://github.com/HDFGroup/hdf5.git
+cd hdf5
+./configure --prefix=/path/to/installation/directory
+make
+make install
+
+NetCDF
+git clone https://github.com/Unidata/netcdf-c.git
+cd netcdf-c
+./configure --prefix=/path/to/installation/directory
+make
+make install
+
+
+OpenBLAS
+
+git clone https://github.com/xianyi/OpenBLAS.git openblasbuild
+cd openblasbuild
+git checkout v0.3.21
+make USE_LOCKING=1 USE_OPENMP=0 USE_THREAD=0
+make PREFIX=~/MyOpenBLAS install
+
+
+
+## Background
+
+Lecture notes on Modular Programming. 
+
+## Description of files
+
+
+- `laplacesolver.cpp`: Main executable, takes 1 inputs: N the number of steps along x. The default value is 10000. Stores the value into output.nc file.
+- `output.nc`:  Contains the output of ./1dlaplacesolve
+- `Makefile`: Allows compiling with  `make` or clean with `make clean` and produces output files: `[name_file].o`, which are used to produced the executable file: `1dlaplacesolver`
+- `1dlaplacesolver`: Executable file (see Usage)
+- `[name_file]~`: Automatic copy of the file: [name_file].
+
+## Usage:
+Contains in Usage.md
+
+
+## Sources
+
+Scinet cluster
+

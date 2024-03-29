@@ -1,0 +1,50 @@
+# ReadMe for Assignment 4: Preparation
+
+Author: Cedrick Perron
+Email address: cedrick.perron@mail.mcgill.ca
+McGill ID: 260928701
+
+## Project overview
+
+The first task is to calculate the scales ka, Ea and r0 given μ (the e↵ective mass of the particle), ` and V (r)
+
+Compiler: gcc 12.0.5
+
+Please include the compiler version you used to run the file on your system. You can find this by `gcc --version` if you are using the `gcc` compiler or just adding `--version` after the name of the compiler you used.
+
+## Physics background
+
+See: `ComputingAssignment_4.pdf`
+
+
+
+
+## Description of files
+
+- `main_schroedinger.c`: Main executable, performs the scaling. It assigns the input_data to the parameters PARAM_DATA, NParams and DynamicParams.
+- `schroedinger.h`: Header file for `main_schrodinger.c`
+- `numerov.c`: Defines workhorse functions that will be used to compute the data: Numerov_Make_Fn, Numerov_Advance_A_Step, Numerov_Advance
+- `numerov.h`: Header file for `numerov.c`
+- `numerov_params.h`: Header File for the parameter structure that we use: contains the Params and the DynamicParams.
+- `schroed_params.dat`: Contains the value of the scaled parameters
+- `input_coulomb`: Where the initial parameters are specified: mass, energy_unit, l, NucA, NucZ (PARAM_DATA).
+- `input_n_params`: Where the initial parameters are specified for N_Params forward & backward
+- `vector_mtx.c`: Contains the function to produce a vector. Essentially, it contains a function: malloc that grabs a memory space corresponding to a row vector.
+- `vector_mtx.h`: Header file for `vector_mtx.c`  
+- `init.c`: Initialize the scale calculation for the energy and length.
+- `init.h`: Header File for init.c
+- `radial_eq_functions.c`: Implement the radial function for forward and backward with the appropriate scaling
+- `radial_eq_functions.h`: Header file for radial_eq_functions.c
+-"derivatives.c": Contains the source code of the function for the derivatives
+-"derivatives.h": Header file for derivatives
+-"solve.c": Contains the source code of Solve_Newton.
+-"solve.h": Contains the header file for source.c
+-"schroedinger.dat": Contains the value for the energy eigenvalues for the forward and backward cases
+-"yb.dat": Contains the solution for the backward case
+-"yf.dat": Contains the solution for the forward case
+-"plot_data": Contains the value of yf and yb for plot
+-"Test1": Contains all files related files for the Testing your Schroedinger Equation Solver case 1
+-"Test2": Contains all files related files for the Task – Energy levels of the Woods-Saxon potential
+## Usage
+
+Usage is described in `Usage`

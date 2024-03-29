@@ -1,0 +1,47 @@
+# ReadMe for gameof1d
+
+Author: Cedrick Perron
+Email address: cedrick.perron@mail.utoronto.ca
+
+
+## Project overview
+
+See description of Assignment 5. Create a laplace solver for a square coaxial cable with V=1 and an outer square boundary with V = 1. 
+
+
+## Compiler and Libraries
+
+Compiler: g++ 13.2.0
+
+
+We use the rarray library:
+
+git clone https://github.com/dkirkby/rarray.git
+
+## Background
+
+Lecture notes on Modular Programming. 
+
+## Description of files
+
+
+- `laplacesolver.cpp`: Main executable, takes 2 inputs: size of the grid, and the threshold. The default values of these parameters are 500 and 1e-6.
+- `gridinitialization.cpp`: Create a grid with outer boundaries set to zero and inner boundary set to V = fill_value, a parameter of the function.
+- `gridinitialization.h`:  Header file for `gridinitialization.cpp`
+- `outputgrid.cpp`: Output the grid (or any other rarray of size NxN).
+- `outputgrid.h`:  Header file for `outputgrid.cpp`
+- `griditerator.cpp`: Contains a function that updates the value of the gridpoint (i, j) using the average rule, and another function that computes a change_matrix consisting of the change between the value of new gridpoint (i,j) with the old value for the gridpoint (i, j).
+- `griditerator.h`:  Header file for `griditerator.cpp`
+- `output.txt`:  Contains the output of ./laplacesolver
+- `test.txt`:  Contains the output of ./laplacesolver 50 (extra)
+- `Makefile`: Allows compiling with  `make` or clean with `make clean` and produces output files: `[name_file].o`, which are used to produced the executable file: `laplacesolver`
+- `laplacesolver`: Executable file (see Usage)
+- `[name_file]~`: Automatic copy of the file: [name_file].
+
+## Usage:
+Contains in Usage.md
+
+
+## Sources
+
+Scinet cluster

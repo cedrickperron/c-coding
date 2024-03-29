@@ -1,0 +1,92 @@
+# ReadMe for HW4
+
+Author: Cedrick Perron
+Email address: cedrick.perron@mail.utoronto.ca
+
+
+## Project overview
+
+Consider a chemical reaction between the three substances X, Y, Z in solution (well-mixed).
+
+2X+𝑌⇌2𝑍
+
+
+Let us denote the concentrations of X, Y, and Z by x, y, and z.
+
+Let the rate of the forward reaction be 𝑘1, and that of the backward reaction be 𝑘2.
+
+According to chemical kinetics, in equilibrium, the concentrations will satisfy
+
+𝑘1𝑥2𝑦=𝑘2𝑧2
+
+But this single equation is not enough to determine the three concentrations.  
+
+Additional information comes from the chemical reaction itself, which shows that 𝑥−2𝑦 is conserved in the reaction, and so is 𝑥+𝑧. In other words,
+
+𝑥−2𝑦=𝑐1
+
+𝑥+𝑧=𝑐2
+
+Where 𝑐1 and 𝑐2 are set by the initial concentrations of the substances, denoted by 𝑥0, 𝑦0 and 𝑧0. I.e.
+
+𝑐1=𝑥0−2𝑦0
+
+𝑐2=𝑥0+𝑧0.
+
+Your assignment
+
+In this assignment, you need to solve the equilibrium values of 𝑥, 𝑦 and 𝑧 given the following parameters and initial concentrations:
+
+𝑘1=1,𝑘2=0.7,𝑥0=0.5,𝑦0=1,𝑧0=0
+
+Solve numerically for the concentrations to within at least 1 part in 1e6 in two ways
+
+First, directly using the above three equations, using a three-dimensional root finding routine from the GSL.
+Second, using that one can combine the above three equations into a single one for 𝑥.
+I.e.
+
+𝑘1𝑥3−(𝑐1𝑘1+2𝑘2)𝑥2+4𝑐2𝑘2𝑥−2𝑘2𝑐22=0
+
+
+Use one of the polynomial root finding routines from the GSL for this second part.
+
+
+## Compiler and Libraries
+
+Compiler: g++ 13.2.0
+
+GSL Library:
+
+git clone https://github.com/ampl/gsl.git
+cd gsl
+./configure
+make
+make install
+
+
+## Background
+
+See Assignment Description in Scinet.
+
+GSL Library (Multidimensional Root-Finding & Polynomials) for the code formats. 
+
+## Description of files
+
+
+- `rate_multiroots_solver.cpp`: Main executive for the equilibrium values of X, Y and Z using the multiroots functions. The parameters are stored in struct params and call in the main.
+- `rate_multiroots_solver.o`: Ouput file for `rate_multiroots_solver.cpp`
+- `rate_polynomialroot_solver.cpp`: Main executive for the equilibrium values of the rate using the  functions. The parameters are initialized and defined in the main.
+- `rate_polynomialroot_solver.o`: Ouput file for `rate_polynomialroot_solver.cpp`
+- `Makefile`: Allows compiling with  `make` or clean with `make clean` and produces output files: `[name_file].o`, which are used to produced the executable file: `rate_multiroots_solver` and `rate_polynomialroot_solver`
+- `rate_multiroots_solver`: Executable file for the `rate_multiroots_solver.cpp` (see Usage)
+- `rate_polynomialroot_solver`: Executable file for the `rate_polynomialroot_solver.cpp` (see Usage)
+- `[name_file]~`: Automatic copy of the file: [name_file].
+
+## Usage:
+Contains in Usage.md
+
+
+## Sources
+
+Scinet cluster
+

@@ -1,0 +1,21 @@
+# ReadMe
+
+Author: Cedrick Perron
+Email address: cedrick.perron@mail.utoronto.ca
+
+Compiler: gcc 
+
+## Project overview
+Find the optimal launch angle given the speed for a maximum horizontal displacement
+
+## Physics background
+See Assignment 1 information
+
+##Description of files
+
+-"angle.cpp": Main executable, ask the input of v by the user and find the optimal angle and horizontal distance.
+
+
+## Usage
+Usage is described in `Usage.md`.
+

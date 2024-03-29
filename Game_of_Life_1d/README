@@ -1,0 +1,50 @@
+# ReadMe for gameof1d
+
+Author: Cedrick Perron
+Email address: cedrick.perron@mail.utoronto.ca
+
+
+## Project overview
+
+Create a 1d game of life and uses Catch2 to implement test to check the function.
+
+
+## Compiler and Library
+
+Compiler: g++ 13.2.0
+
+Catch2 Module: https://github.com/catchorg/Catch2/releases
+
+
+
+## Background
+
+Lecture notes on Modular Programming. 
+
+## Description of files
+
+
+- `gameof1d.cpp`: Main executable, takes three inputs: the number of cells, the number of time step and the fraction of cell alive, and outputs the cells during each time evolution. The default values of these parameters are 70, 125, 0.70. Output is stored in testoutput.txt
+- `celltype.h`:. We also define the type Cells, introduce <vector> library and define the global bool alive and dead
+- `fillcells.cpp`: Defines the functions initiate_cell that create a new 1d cell. It is also there that we specify the values of the global parameters: alive and dead.
+- `fillcell.h`: Header file for `create_cell.cpp`
+- `outputcells.cpp`: Defines the functions output_cell that outputs the time step, the cells (alive = I, dead = - ) and the fraction of cells that are alive.
+- `outputcells.h`: Header file for `output_cell.cpp`. It also where we introduce the library <iostream>
+- `updatecells.cpp`: Define the functions next_cell_state and update_cell. The next_cell_state updates each element of the cell (to alive or dead) for a time step. The function update_cell is a for loop that passes the next_cell_state function to every element of the cell that we want to evolve and return this new cell.
+- `updatecells.h`: Header file for `update_cell.cpp`.
+- `originalgameof1d.cpp`: Main executable, same as gameof1d.cpp except the Cells are special elements, and it is not modular. Output is stored in originaltestoutput.txt
+- `updatecells_test.cpp`: Contains the Catch2 test for the updatecells.cpp functions.
+- `fillcells_test.cpp`: Contains the Catch2 test for the fillcells.cpp functions.
+- `outputcells_test.cpp`: Contains the Catch2 test for the outputscells.cpp functions.
+- `Makefile`: Allows compiling with  `make` or clean with `make clean` and produces output files: `[name_file].o`, which are used to produced the executable file: `gameof1d`
+- `gameof1d`: Executable file (see Usage)
+- `[name_file]~`: Automatic copy of the file: [name_file].
+
+## Usage:
+Contains in Usage.md
+
+
+## Sources
+
+Scinet cluster
+

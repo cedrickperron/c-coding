@@ -1,0 +1,16 @@
+# Usage for Hello
+
+## Compilation
+
+In the `Ass4` directory, `make`  will both generate an executable  from the source files.
+
+## Running
+
+Once compiled, run in the terminal: `./schroedinger_test input_coulomb input_n_params`
+
+This produces the following files:
+- params_data.dat: Contains the value of the mass, r0, Ea, ell, ka, NucA, NucZ, nmaxf, nmaxb 
+## Cleaning
+
+To safely remove the `Hello` executable, run `make clean` in terinal.
+
