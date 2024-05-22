@@ -1,0 +1,49 @@
+# ReadMe for Assignment 9
+
+Author: Cedrick Perron
+Email address: cedrick.perron@mail.utoronto.ca
+
+
+## Project overview
+
+Use MPI to generate a list of random numbers
+
+
+
+Compiler: g++ 13.2.0
+source setup
+
+## Background
+
+Lecture notes
+
+## Description of files
+
+
+- `mpi_random_main`: Main executable for the step where the CPU0 computes all the numbers.
+- `mpi_random_main.cpp`: CPU0 generates N random number in bathches of Z numbers and split the data into interval [p, (p+1)/size) to be sent to CPUp. CPUp receives the data, computes an histogram and send it back to CPU0 to be added to the global histogram.
+- `setup`: source file for the module. To run first.
+- `filter_data_points.cpp`, `prng_example.cpp`, `histogram.cpp`: cpp files to get the executable. The first split a batch of datas into intervals [p, (p+1)/size), the second contains the file to generate random numbers, the third contains the code to compute the histogram from batch of data and add it to the global histogram.
+- `filter_data_points.h`, `prng_example.h`, `histogram.h`: Header files for the above cpp file.
+- `Makefile`: Make file for mpi_random_main executable
+- `run_random_(N).sh`: Bash command to run the parallelization of the code using `(N)` CPUs. We have N = 1, 4, 16, 32.
+- `run_all.sh`: chmod +x permission file. Run the jobs N = 1, 4, 16, 32 CPUs using ./run_all.sh
+- `output_(N).txt`, `time_(N).txt`: output and the time of run of the `run_random_(N).sh` respectively
+------
+- `Step_4` (dir): Contains the modified `new_main` and `new_main.cpp` that generates random numbers across different CPUs. All the files otherwise have the same meaning.
+- `step4_output_(N).txt`, `step4_time_(N).txt`: output and the time of run of the `run_random_(N).sh` respectively
+
+## Usage:
+Contains in Usage.md
+
+
+## ANSWERS TO QUESTIONS:
+When we split the number generation across different CPUs (Step_4), we see a significant sorthening of the time it takes to run the job for larger CPUs.
+
+When only the CPU0 does the data generation, it actually takes longer to run for more CPUs. This is because it taes more time to send the batch of data points to the CPUs, computes the histograms and re-send it back to the CPU0 then it takes to do all this with CPU0
+
+
+
+## Sources
+
+Scinet cluster
