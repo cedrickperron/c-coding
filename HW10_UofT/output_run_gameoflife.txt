@@ -1,2 +1,0 @@
-make: Nothing to be done for `all'.
-All runs completed. Results saved in runtimes.txt
